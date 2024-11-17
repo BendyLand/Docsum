@@ -36,13 +36,13 @@ Likewise, running:
 ```bash
 docsum test py
 ```
-Would write the following the a 'summary.txt':
+Would write the following to a 'summary.txt':
 ```txt
 # 1.py
 print("Hello world!")
 ```
 
-If you have a file type that doesn't support comments, like .txt, or you're using a language that isn't currently supported, the file names will be preceded with a hyphen:
+If you have a file type that doesn't support comments, like .txt, or if you're using a language that isn't currently supported, the file names will be preceded with a hyphen:
 ```bash
 docsum test txt
 ```
@@ -54,8 +54,10 @@ text for you
 to read
 in the text file.
 ```
+*Please note: If you run the tool for .txt files multiple times in a row, right now it will include the current 'summary.txt' in the new version, which gets messy fast. For now, this can be avoided by simply deleting 'summary.txt' before running the tool again.*
 
 ## Future Additions
 
  - I want to add the option to simply print the result instead of writing it to a file.
  - I would also like to add a --maxdepth flag, in case you want to limit the amount of recursive searching.
+ - Fix the bug described above.
