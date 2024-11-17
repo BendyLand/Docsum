@@ -24,6 +24,14 @@ func main() {
 		resultStr := createResultString(paths, contents, commentToken)
 		err = os.WriteFile("summary.txt", []byte(resultStr), 0644)
 		checkError(err)
+		switch len(paths) {
+		case 0:
+			fmt.Println("No matching files found.")
+		case 1:
+			fmt.Println("File written to 'summary.txt'!")
+		default:
+			fmt.Println("Files written to 'summary.txt'!")
+		}
 	} else {
 		printUsage()
 	}
