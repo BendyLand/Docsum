@@ -1,0 +1,5 @@
+Create a tool that can walk through the structure of a project and write the 
+file contents to a single file with the file names in a matching code comment 
+style. 
+
+
