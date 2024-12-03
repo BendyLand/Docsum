@@ -1,4 +1,4 @@
-# docsum
+# Docsum
 
 A simple CLI tool which recursively reads all the files in a given directory matching a certain file extension, then writes their names and contents into an single file called 'summary.txt'.
 
