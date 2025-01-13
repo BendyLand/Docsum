@@ -115,7 +115,7 @@ func isolateFileNames(filepaths []string) []string {
 }
 
 func getCommentToken(ext string) string {
-	doubleSlashLangs := []string{"c", "cpp", "cc", "java", "js", "ts", "go", "odin", "rs", "zig"}
+	doubleSlashLangs := []string{"c", "h", "hpp" ,"cpp", "cc", "java", "js", "ts", "go", "odin", "rs", "zig"}
 	hashLangs := []string{"py", "rb"}
 	var result string
 	switch {
