@@ -22,7 +22,11 @@ func main() {
 		checkError(err)
 		paths = isolateFileNames(paths)
 		resultStr := createResultString(paths, contents, commentToken)
-		err = os.WriteFile("summary.txt", []byte(resultStr), 0644)
+		if len(args) > 1 && sliceContainsString(args, "-a") {
+			appendToFile("summary.txt", resultStr)
+		} else {
+			err = os.WriteFile("summary.txt", []byte(resultStr), 0644)
+		}
 		checkError(err)
 		switch len(paths) {
 		case 0:
@@ -140,4 +144,28 @@ func createResultString(paths []string, contents []string, commentToken string) 
 	result = strings.Trim(result, " \n")
 	result += "\n"
 	return result
+}
+
+func sliceContainsString(slice []string, target string) bool {
+	for _, item := range slice {
+		if strings.Contains(item, target) {
+			return true
+		}
+	}
+	return false
+}
+
+func appendToFile(path string, text string) {
+	file, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		fmt.Println("Unable to open 'summary.txt'")
+		os.Exit(1)
+	}
+	defer file.Close()
+	text = fmt.Sprintf("\n%s", text)
+	if _, err := file.WriteString(text); err != nil {
+		fmt.Println("Unable to append to existing 'summary.txt'")
+		os.Exit(1)
+	}
+
 }
